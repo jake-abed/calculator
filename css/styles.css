@@ -8,3 +8,22 @@ h1 {
 	text-align: center;
 	font-weight: 800;
 }
+
+.calculator-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.calculator-body {
+	background-color: #F9E784;
+	padding: 3vw;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(6, 1fr);
+	width: max(340px, 22vw);
+	border-radius: 5%;
+	box-shadow: 7px 7px 0px #d05353;
+	aspect-ratio: 1 / 1.4;
+}
