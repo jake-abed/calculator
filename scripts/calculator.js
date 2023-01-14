@@ -26,7 +26,7 @@ const divide = (x, y) => Number(x) / Number(y);
 
 //Operate takes operator and two values and runs the equation.
 const operate = (operator, x, y) => {
-		switch (operator) {
+	switch (operator) {
 		case '+':
 			return add(x, y);
 			break;
@@ -54,8 +54,75 @@ const clearDisplay = () => {
 	return calcScreen.innerText = '';
 }
 
-//Update display on button press
-
+//Update display and calculator.currentOperand on num button press
 numberButtons.forEach(button => {
-	button.addEventListener('click', () => addToDisplay(button.dataset.val));
+	button.addEventListener('pointerdown', () => {
+		if (!!calculator.operator &&
+			!!calculator.currentOperand &&
+			!calculator.lastOperand) {
+			calculator.lastOperand = calculator.currentOperand;
+			clearDisplay();
+			addToDisplay(button.dataset.val);
+			calculator.currentOperand = calculator.displayValue;
+		} else if (!!calculator.operator &&
+			!calculator.currentOperand &&
+			!!calculator.lastOperand) {
+			clearDisplay();
+			addToDisplay(button.dataset.val);
+			calculator.currentOperand = calculator.displayValue;
+		}
+		else {
+			addToDisplay(button.dataset.val);
+			calculator.currentOperand = calculator.displayValue;
+		}
+	});
 })
+
+//Helper function to check if a string ends with an operator sign.
+const endsWithOperator = (calcString) => {
+	const finalChar = calcString[calcString.length - 1];
+	if (finalChar === '+' ||
+		finalChar === '-' ||
+		finalChar === '/' ||
+		finalChar === '*') return true
+		else return false;
+}
+
+operatorButtons.forEach(button => {
+	button.addEventListener('pointerdown', () => {
+		let displayVal = calculator.displayValue;
+		console.log(displayVal);
+		if (endsWithOperator(displayVal)) {
+			calculator.operator = button.dataset.val;
+			displayVal = displayVal.replace(displayVal[displayVal.length - 1],
+				calculator.operator)
+			clearDisplay();
+			return addToDisplay(displayVal);
+		} else if (!!calculator.lastOperand) {
+			calculator.operator = button.dataset.val;
+			let result = operate(calculator.operator,
+				calculator.lastOperand,
+				calculator.currentOperand);
+			calculator.lastOperand = result;
+			calculator.currentOperand = null;
+			clearDisplay();
+			addToDisplay(calculator.lastOperand);
+		}
+		else {
+			calculator.operator = button.dataset.val;
+			displayVal += calculator.operator;
+			return addToDisplay(calculator.operator);
+		}
+	})
+})
+
+const clearCalculator = () => {
+	calculator.currentOperand = null;
+	calculator.lastOperand = null;
+	calculator.displayValue = '';
+	calculator.operator = null;
+	clearDisplay();
+	return console.log('Calculator cleared!')
+}
+
+clearButton.addEventListener('pointerdown', clearCalculator);

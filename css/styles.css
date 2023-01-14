@@ -21,10 +21,12 @@ h1 {
 	margin: 0 auto;
 	width: max(340px, 22vw);
 	background-color: #e58f65;
+	border: 0.5px solid #e58b65;
 	box-shadow:
-	3px 3px 3px #d47d55,
-	6px 6px 3px #d05a53,
-	10px 10px 0px #d05353;
+	1px 1px 2px 1px #e58b65,
+	5px 5px 2px 4px #df7b64,
+	7px 7px 2px 6px #db6853,
+	12px 12px 1px 6px #d05353;
 	border-radius: 4% 4% 4% 4%;
 }
 
