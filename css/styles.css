@@ -21,7 +21,10 @@ h1 {
 	margin: 0 auto;
 	width: max(340px, 22vw);
 	background-color: #e58f65;
-	box-shadow: 7px 7px 0px #d05353;
+	box-shadow:
+	3px 3px 3px #d47d55,
+	6px 6px 3px #d05a53,
+	10px 10px 0px #d05353;
 	border-radius: 4% 4% 4% 4%;
 }
 
@@ -39,14 +42,30 @@ h1 {
 	grid-row: 2 / span 2;
 	width: auto;
 	background-color: ghostwhite;
-	border-radius: 1rem;
-	box-shadow: inset 0px 0px 10px #191919;
+	border-radius: .5rem;
+	box-shadow:
+	inset 2px 2px 10px #000000,
+	inset -1px -1px 5px #000000;
+	display: flex;
+	justify-content:  right;
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
+.screen-text {
+	font-size: x-large;
+	text-align: right;
+	word-break: break-word;
+	flex: 0 1 auto;
 }
 
 .button {
 	background-color: #d05353;
-	box-shadow: 4px 4px 1px #191919, 6px 4px 1px #191919, 4px 6px 1px #191919;
-	border-radius: 10rem;
+	box-shadow:
+	4px 4px 1px #191919,
+	6px 4px 1px #191919,
+	4px 6px 1px #191919;
+	border-radius: .5rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -63,7 +82,7 @@ h1 {
 	aspect-ratio: 1 / 1;
 }
 
-.division {
+.divide {
 	grid-column: 5 / span 1;
 	grid-row: 4 / span 1;
 	aspect-ratio: 1 / 1;
@@ -87,7 +106,7 @@ h1 {
 	aspect-ratio: 1 / 1;
 }
 
-.multiplication {
+.multiply {
 	grid-column: 5 / span 1;
 	grid-row: 5 / span 1;
 	aspect-ratio: 1 / 1;

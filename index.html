@@ -5,31 +5,33 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="./css/styles.css">
-	<script src="./scripts/calculator.js"></script>
+	<script src="./scripts/calculator.js" defer></script>
 	<title>CALCULATOR</title>
 </head>
 <body>
 	<h1>CALCULATOR</h1>
 	<div class="calculator-wrapper">
 		<div class="calculator-body">
-			<div class="screen"></div>
+			<div class="screen">
+				<p class="screen-text"></p>
+			</div>
 			<div class="clear button"><p class="button-label">AC</p></div>
 			<div class="sign button"><p class="button-label">+/-</p></div>
-			<div class="division button"><p class="button-label">/</p></div>
-			<div class="seven button"><p class="button-label">7</p></div>
-			<div class="eight button"><p class="button-label">8</p></div>
-			<div class="nine button"><p class="button-label">9</p></div>
-			<div class="multiplication button"><p class="button-label">*</p></div>
-			<div class="four button"><p class="button-label">4</p></div>
-			<div class="five button"><p class="button-label">5</p></div>
-			<div class="six button"><p class="button-label">6</p></div>
-			<div class="minus button"><p class="button-label">-</p></div>
-			<div class="one button"><p class="button-label">1</p></div>
-			<div class="two button"><p class="button-label">2</p></div>
-			<div class="three button"><p class="button-label">3</p></div>
-			<div class="plus button"><p class="button-label">+</p></div>
-			<div class="zero button"><p class="button-label">0</p></div>
-			<div class="point button"><p class="button-label">.</p></div>
+			<div class="divide operator button" data-val="/"><p class="button-label">/</p></div>
+			<div class="seven number button" data-val="7"><p class="button-label">7</p></div>
+			<div class="eight number button" data-val="8"><p class="button-label">8</p></div>
+			<div class="nine number button" data-val="9"><p class="button-label">9</p></div>
+			<div class="multiply operator button" data-val="*"><p class="button-label">*</p></div>
+			<div class="four number button" data-val="4"><p class="button-label">4</p></div>
+			<div class="five number button" data-val="5"><p class="button-label">5</p></div>
+			<div class="six number button" data-val="6"><p class="button-label">6</p></div>
+			<div class="minus operator button" data-val="-"><p class="button-label">-</p></div>
+			<div class="one number button" data-val="1"><p class="button-label">1</p></div>
+			<div class="two number button" data-val="2"><p class="button-label">2</p></div>
+			<div class="three number button" data-val="3"><p class="button-label">3</p></div>
+			<div class="plus operator button" data-val="+"><p class="button-label">+</p></div>
+			<div class="zero number button" data-val="0"><p class="button-label">0</p></div>
+			<div class="point button" data-val="."><p class="button-label">.</p></div>
 			<div class="equal button"><p class="button-label">=</p></div>
 		</div>
 	</div>
