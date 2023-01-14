@@ -4,7 +4,7 @@
 }
 
 body {
-	background-color: #F9E784;
+	background-color: ghostwhite;
 }
 
 h1 {
@@ -43,7 +43,7 @@ h1 {
 	grid-column: 2 / span 4;
 	grid-row: 2 / span 2;
 	width: auto;
-	background-color: ghostwhite;
+	background-color: #afb8bd;
 	border-radius: .5rem;
 	box-shadow:
 	inset 2px 2px 10px #000000,
@@ -73,15 +73,13 @@ h1 {
 	align-items: center;
 }
 
-.clear {
-	grid-column: 2 / span 2;
-	grid-row: 4 / span 1;
+.button.operator {
+	background-color: #F9E784;
 }
 
-.sign {
-	grid-column: 4 / span 1;
+.clear {
+	grid-column: 2 / span 3;
 	grid-row: 4 / span 1;
-	aspect-ratio: 1 / 1;
 }
 
 .divide {

@@ -14,8 +14,7 @@ const calculator = {
 	currentOperand: null,
 	lastOperand: null,
 	operator: null,
-	result: null,
-	displayValue: ''
+	displayValue: '',
 }
 
 //Basic math functions for add, subtract, multiply, divide.
@@ -92,13 +91,16 @@ operatorButtons.forEach(button => {
 	button.addEventListener('pointerdown', () => {
 		let displayVal = calculator.displayValue;
 		console.log(displayVal);
-		if (endsWithOperator(displayVal)) {
+		if (!calculator.currentOperand) {
+			return console.log('Enter a number first.');
+		} else if (endsWithOperator(displayVal)) {
 			calculator.operator = button.dataset.val;
 			displayVal = displayVal.replace(displayVal[displayVal.length - 1],
 				calculator.operator)
 			clearDisplay();
 			return addToDisplay(displayVal);
-		} else if (!!calculator.lastOperand) {
+		} else if (!!calculator.lastOperand && !!calculator.currentOperand) {
+			if (calculator.currentOperand == 0) return alert('Bad! No breaking reality.');
 			calculator.operator = button.dataset.val;
 			let result = operate(calculator.operator,
 				calculator.lastOperand,
@@ -107,6 +109,10 @@ operatorButtons.forEach(button => {
 			calculator.currentOperand = null;
 			clearDisplay();
 			addToDisplay(calculator.lastOperand);
+		} else if (!calculator.currentOperand) {
+			calculator.operator = button.dataset.val;
+			displayVal += calculator.operator;
+			return addToDisplay(calculator.operator);
 		}
 		else {
 			calculator.operator = button.dataset.val;
@@ -126,3 +132,29 @@ const clearCalculator = () => {
 }
 
 clearButton.addEventListener('pointerdown', clearCalculator);
+
+equalButton.addEventListener('pointerdown', () => {
+	if (!calculator.operator || !calculator.currentOperand || !calculator.lastOperand) {
+		return console.log('No calculation');
+	} else {
+		let result = operate(calculator.operator,
+			calculator.lastOperand,
+			calculator.currentOperand);
+		calculator.lastOperand = result;
+		calculator.currentOperand = null;
+		clearDisplay();
+		addToDisplay(calculator.lastOperand);
+	}
+})
+
+pointButton.addEventListener('pointerdown', () => {
+	if (!!calculator.currentOperand &&
+		calculator.currentOperand.includes('.')) {
+			return console.log('It\'s already a float...');
+		}
+	if (!calculator.currentOperand &&
+		!!calculator.lastOperand) {
+			return console.log('Cannot modify return value.');
+		}
+	addToDisplay('.');
+})
