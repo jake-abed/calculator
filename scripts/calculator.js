@@ -91,7 +91,7 @@ operatorButtons.forEach(button => {
 	button.addEventListener('pointerdown', () => {
 		let displayVal = calculator.displayValue;
 		console.log(displayVal);
-		if (!calculator.currentOperand) {
+		if (!calculator.currentOperand && !calculator.lastOperand) {
 			return console.log('Enter a number first.');
 		} else if (endsWithOperator(displayVal)) {
 			calculator.operator = button.dataset.val;
@@ -109,7 +109,7 @@ operatorButtons.forEach(button => {
 			calculator.currentOperand = null;
 			clearDisplay();
 			addToDisplay(calculator.lastOperand);
-		} else if (!calculator.currentOperand) {
+		} else if (!calculator.currentOperand  && !!calculator.lastOperand) {
 			calculator.operator = button.dataset.val;
 			displayVal += calculator.operator;
 			return addToDisplay(calculator.operator);
